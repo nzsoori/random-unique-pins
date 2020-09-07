@@ -14,22 +14,22 @@ export const generateNumbers = (
 ) => {
   for (let i = 0; i < stop; i++) {
     let n: number = Math.floor(Math.random() * (max - min + 1)) + min;
-
     let arr_num: String = n + "";
     let check: boolean = pin.includes(n);
 
     for (let si: number = 0; si < arr_num.toString().length - 1; si++) {
-      if (parseInt(arr_num[si]) >= parseInt(arr_num[si + 1])) {
+      if (parseInt(arr_num[si]) === parseInt(arr_num[si + 1])) {
         check = true;
+        break;
       } else {
-        if (parseInt(arr_num[si]) <= parseInt(arr_num[si + 1])) {
+        if (parseInt(arr_num[si]) > parseInt(arr_num[si + 1])) {
           check = true;
         } else {
-          if (parseInt(arr_num[si]) === parseInt(arr_num[si + 1])) {
+          if (parseInt(arr_num[si]) < parseInt(arr_num[si + 1])) {
             check = true;
           }
         }
-        check = false;
+        check = pin.includes(n);
       }
     }
 
@@ -41,17 +41,18 @@ export const generateNumbers = (
         check = pin.includes(n);
         arr_num = n + "";
         for (let si: number = 0; si < arr_num.toString().length - 1; si++) {
-          if (parseInt(arr_num[si]) >= parseInt(arr_num[si + 1])) {
+          if (parseInt(arr_num[si]) === parseInt(arr_num[si + 1])) {
             check = true;
+            break;
           } else {
-            if (parseInt(arr_num[si]) <= parseInt(arr_num[si + 1])) {
+            if (parseInt(arr_num[si]) > parseInt(arr_num[si + 1])) {
               check = true;
             } else {
-              if (parseInt(arr_num[si]) === parseInt(arr_num[si + 1])) {
+              if (parseInt(arr_num[si]) < parseInt(arr_num[si + 1])) {
                 check = true;
               }
             }
-            check = false;
+            check = pin.includes(n);
           }
         }
 
